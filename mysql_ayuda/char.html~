@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Vertical icon navigation with slide-out menu</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+   <ul class="menu">
+      <li title="Inicio"><a href="#" class="inicio">Manual</a></li>
+      <li title="Temporales"><a href="temporales.html" class="temp">Temporales</a></li>
+      <li title="Join"><a href="join.html" class="join">Join</a></li>
+      <li title="Depart"><a href="depart.html" class="dept">depart</a></li>
+      <li title="Subconsultas"><a href="subconsultas.html" class="sub">Subconsultas</a></li>
+
+    </ul>
+    
+    <ul class="menu-bar">
+        <li><a href="index.html" class="menu-button">Inicio</a></li>
+        <li><a href="ddl3.html" class="menu-button">ddl</a></li>
+        <li><a href="agregacion.html">Agregación</a></li>
+        <li><a href="char.html">Char</a></li>
+        <li><a href="like.html">Like</a></li>
+        <li><a href="numericas.html">Numericas</a></li>
+    </ul>
+    <script src='js/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+
+  <h1 id='FMFACAZfmmK'>Funciones Char</h1>
+
+<br/>
+
+<div data-section-style='5'><ul id='FMFACAM3byG'><li id='FMFACA9TWps' class='' value='1'>Muestra la longitud de todos los nombres de los países de world.Country
+
+<br/></li></ul></div><pre id='FMFACAt9aWt'>select char_length(name) from Country;</pre>
+
+<div data-section-style='5'><ul id='FMFACAHF0Ho'><li id='FMFACAm0qHn' class='' value='1'>Muestra la posición de los espacios en blanco en el nombre de los países. 
+
+<br/></li></ul></div><pre id='FMFACAUIeKW'>select instr(name,' ') from Country; </pre>
+
+<div data-section-style='5'><ul id='FMFACAZuZ1j'><li id='FMFACAxQCe8' class='' value='1'>Utilizando la función strcmp, ¿existe algún país llamado ‘Armenia’ en el continente asiático?
+
+<br/></li></ul></div><pre id='FMFACAJ2zg0'>select strcmp(name,'armenia') from Country where continent='Asia'; </pre>
+
+<div data-section-style='5'><ul id='FMFACAkUH7O'><li id='FMFACA2F1WM' class='' value='1'>Muestra el nombre de los países junto a su continente unidos por la expresión ‘pertenece al continente’. (Ayuda: utilizar función concat)
+
+<br/></li></ul></div><pre id='FMFACAiT4Va'> select concat(name,' pertenece al continente ',continent) from Country;</pre>
+
+<div data-section-style='5'><ul id='FMFACANhg0p'><li id='FMFACAti1Dp' class='' value='1'>Muestra en mayúsculas las tres primeras letras del nombre de los países del continente europeo.
+
+<br/></li></ul></div><pre id='FMFACACZ4y9'>select upper(left(name,3)) from Country where continent='Europe'; </pre>
+
+<div data-section-style='5'><ul id='FMFACAm4Znr'><li id='FMFACAEmNAm' class='' value='1'>Muestra el nombre de los países pero si hay algún nombre que contenga algún espacio en blanco, muestra solo la primera parte del nombre. Es decir, si el nombre es ‘pepito mateo’ debe aparecer solo ‘pepito’
+
+<br/></li></ul></div><pre id='FMFACAiKvzB'>select substring_index(name,' ',1) from Country;</pre>
+
+
+  </body>
+</html>

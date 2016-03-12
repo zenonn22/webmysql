@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+ 
+     <ul class="menu">
+      <li title="Inicio"><a href="#" class="inicio">Manual</a></li>
+      <li title="Temporales"><a href="temporales.html" class="temp">Temporales</a></li>
+      <li title="Join"><a href="join.html" class="join">Join</a></li>
+      <li title="Depart"><a href="depart.html" class="dept">depart</a></li>
+      <li title="Subconsultas"><a href="subconsultas.html" class="sub">Subconsultas</a></li>
+
+    </ul>
+    
+    <ul class="menu-bar">
+        <li><a href="index.html" class="menu-button">Inicio</a></li>
+        <li><a href="ddl3.html" class="menu-button">ddl</a></li>
+        <li><a href="agregacion.html">Agregación</a></li>
+        <li><a href="char.html">Char</a></li>
+        <li><a href="like.html">Like</a></li>
+        <li><a href="numericas.html">Numericas</a></li>
+    </ul>
+    <script src='js/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+
+<h1 id='NDFACA7j6FR'>DDL_III</h1>
+
+<br/>
+
+<i>Crea una tabla que llamaremos "GelderlandDist" que contenga las columnas Name, District, CountryCode para aquellas filas de la tabla City asociadas al distrito "Gelderland". Confirma que los datos se han copiado correctamente. </i><br/>
+
+<pre id='NDFACAcaKoD'> create table GelderlandDist select Name,District,CountryCode from City where<br>District='Gelderland';</pre>
+
+<br/>
+
+● Crea una tabla (que llamaremos “GelderlandDist2”) con la misma estructura que "GelderlandDist". Comprueba que el sistema ha actuado como se esperaba. <br/>
+
+<pre id='NDFACAB5QHO'>create table GelderlandDist2 like GelderlandDist;</pre>
+
+<br/>
+
+● Elimina la tabla "GelderlandDist2". <br/>
+
+<pre id='NDFACAgLDvc'>drop table GelderlandDist2;</pre>
+
+<br/>
+
+● Modifica la tabla "GelderlandDist" para que el campo Name tenga una longitud de 20 caracteres. Comprueba que ahora el campo admitirá valores nulos. <br/>
+
+<pre id='NDFACAeQqhk'>alter table GelderlandDist modify column Name char(20);</pre>
+
+<br/>
+
+● Añade una columna a "GelderlandDist" que llamarás Inauguration que contendrá fechas y no permitirá valores nulos. (Si tu sistema esta trabajando con el modo NO_ZERO_DATE, te aparecerá un error). ¿Cómo rellena el sistema esta nueva columna? <br/>
+
+<pre id='NDFACAPKsHk'>alter table GelderlandDist add column Inauguration date not null;</pre>
+
+<br/>
+
+● Convierte el campo Name de "GelderlandDist" en clave primaria. <br/>
+
+<pre id='NDFACA1gxMc'>alter table GelderlandDist add Primary Key (Name);</pre>
+
+● Crea una nueva tabla que llamarás Big_Cities copiando datos de la tabla City. Esta nueva tabla contendrá los campos id, name, population y los datos de las ciudades que tengan más 8 millones de habitantes. <br/>
+
+<pre id='NDFACAUA2Ff'>create table Big_Cities select ID,Name,Population from City where Population&gt;8000000;</pre>
+
+<br/>
+
+● Añade una nueva columna, que llamarás Founded y que será una fecha que permite valores nulos, a la tabla Big_Cities. ¿Cómo ha rellenado el sistema la nueva columna?<br/>
+
+<pre id='NDFACAouN3R'>alter table Big_Cities add column founded date;</pre>
+
+ ● Elimina la columna Founded de la tabla Big_Cities<br/>
+
+<pre id='NDFACA2f5a8'>alter table Big_Cities drop column founded;</pre>
+
+ ● Modifica la columna ID de Big_Cities para que admita valores nulos. <br/>
+
+<pre id='NDFACAWwHWY'>alter table Big_Cities modify column id int(11);</pre>
+
+● Convierte el campor ID de Big_Cities en clave primaria<br/>
+
+<pre id='NDFACA4OBa1'>alter table Big_Cities modify column id int(11) PRIMARY KEY;</pre>
+
+
+  </body>
+</html>

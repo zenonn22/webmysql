@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Vertical icon navigation with slide-out menu</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+  <ul class="menu">
+      <li title="Inicio"><a href="#" class="inicio">Manual</a></li>
+      <li title="Temporales"><a href="temporales.html" class="temp">Temporales</a></li>
+      <li title="Join"><a href="join.html" class="join">Join</a></li>
+      <li title="Depart"><a href="depart.html" class="dept">depart</a></li>
+      <li title="Subconsultas"><a href="subconsultas.html" class="sub">Subconsultas</a></li>
+
+    </ul>
+    
+    <ul class="menu-bar">
+        <li><a href="index.html" class="menu-button">Inicio</a></li>
+        <li><a href="ddl3.html" class="menu-button">ddl</a></li>
+        <li><a href="agregacion.html">Agregación</a></li>
+        <li><a href="char.html">Char</a></li>
+        <li><a href="like.html">Like</a></li>
+        <li><a href="numericas.html">Numericas</a></li>
+    </ul>
+    <script src='js/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+<h1 id='YVCACAbz7lE'>Select Departamento</h1>
+
+<br/>
+
+<br/>
+
+1-Mostrar el número de empleados en cada departamento <br/>
+
+<pre id='YVCACA188Ta'>select dept_no,emp_no from emple;</pre>
+
+2-Mostrar los departamentos con más de 5 empleados <br/>
+
+<pre id='YVCACAaWZoK'>select dept_no,emp_no from emple group by dept_no having count(*)&gt;5;</pre>
+
+3-Hallar la media de los salarios de cada departamento <br/>
+
+<pre id='YVCACA8Js49'>select avg(salario),dept_no from emple group by dept_no;</pre>
+
+4-Mostrar el nombre de los empleados vendedores del departamento número 30 <br/>
+
+<pre id='YVCACAxtLE7'>select apellido,oficio from emple where dept_no='30' and oficio='VENDEDOR';</pre>
+
+5-Mostrar el número de vendedores del departamento 30 <br/>
+
+<pre id='YVCACAt9RPE'>select emp_no,oficio from emple where dept_no='30' and oficio='VENDEDOR';</pre>
+
+6-Mostrar los oficios de los empleados del departamento 30 <br/>
+
+<pre id='YVCACAq8OKK'>select apellido,oficio,dept_no from emple where dept_no='30';</pre>
+
+7-Mostrar el número de empleados de cada departamento cuyo oficio sea ‘EMPLEADO’ <br/>
+
+<pre id='YVCACAuHdKC'>select emp_no,oficio from emple where oficio='EMPLEADO';</pre>
+
+8-Mostrar el número de empleados de cada departamento cuyo oficio sea ‘EMPLEADO’ <br/>
+
+<pre id='YVCACAWjpFu'>select dept_no, count(emp_no) from emple group by dept_no order by count(emp_no) desc limit 1;</pre>
+
+9-Para cada oficio obtener la suma de salarios <br/>
+
+<pre id='YVCACAXg8Ec'>select sum(salario),oficio from emple group by oficio;</pre>
+
+10-Mostrar la suma de salarios de cada oficio del departamento 30 <br/>
+
+<pre id='YVCACAvbah9'>select sum(salario) from emple where dept_no='30' group by oficio;</pre>
+
+11-Mostrar el número de departamento que tenga más empleados cuyo oficio sea ‘EMPLEADO’ <br/>
+
+<pre id='YVCACAeVznZ'>select dept_no from emple where oficio='EMPLEADO' group by dept_no order by count(emp_no) desc limit 1;</pre>
+
+12-Mostrar el número de oficios distintos de cada departamento <br/>
+
+<pre id='YVCACAU1ny3'>select dept_no,count(distinct oficio) from emple group by dept_no;</pre>
+
+13-Mostrar los departamentos que tengan más de dos personas trabajando en el mismo oficio <br/>
+
+<pre id='YVCACAol11j'>select dept_no,count(oficio) from emple group by dept_no, oficio having count(oficio)&gt;2;</pre>
+
+14- Muestra para cada departamento todos los oficios concatenados y ordenados por el salario de forma descendente. <br/>
+
+<pre id='YVCACA74NXQ'>select group_concat(oficio order by salario desc) from emple group by dept_no;</pre>
+
+<br/>
+
+<b>_</b><b>_______________________________________________________________________________________________________________________________________</b><br/>
+
+<br/>
+
+<br/>
+
+1- Mostrar el número de empleados en cada departamento <br/>
+
+<pre id='YVCACAJVlzc'> select localidad,count(dni) from personas group by localidad;</pre>
+
+2- Mostrar los departamentos con más de 5 empleados<br/>
+
+<pre id='YVCACA0GUOO'>select avg(salario) from personas group by funcion;</pre>
+
+3- Hallar la media de los salarios de cada departamento <br/>
+
+<pre id='YVCACALelGR'> select avg(salario),funcion from personas group by funcion having avg(salario)&gt;2500;</pre>
+
+4- Mostrar el nombre de los empleados vendedores del departamento número 30<br/>
+
+<pre id='YVCACAwTdnE'>select avg(salario), localidad from personas group by localidad limit 1;</pre>
+
+5- Mostrar el número de vendedores del departamento 30 <br/>
+
+<pre id='YVCACAI5D5L'>select count(dni), group_concat(funcion),localidad from personas group by localidad;</pre>
+
+6- Mostrar los oficios de los empleados del departamento 30 <br/>
+
+<pre id='YVCACA1ySlu'>select cod_hospital,count(distinct localidad) from personas group by cod_hospital; </pre>
+
+7- Mostrar el número de empleados de cada departamento cuyo oficio sea ‘EMPLEADO’<br/>
+
+<pre id='YVCACA4j1Gl'>select char_length(apellidos),apellidos from personas group by localidad order by 1 desc limit 1;</pre>
+
+8- Mostrar el departamento con más empleados<br/>
+
+<pre id='YVCACAVeyZn'>select apellidos,localidad, char_length(apellidos) from personas group by localidad order by 3 desc;</pre>
+
+9- Para cada oficio obtener la suma de salarios <br/>
+
+<pre id='YVCACAoQPSO'>select sum(salario) from personas where salario is not null;</pre>
+
+10- Mostrar la suma de salarios de cada oficio del departamento 30 <br/>
+
+<pre id='YVCACARpRJU'>select sum(salario), oficio from emple where dept_no=30 group by 2;</pre>
+
+  </body>
+</html>

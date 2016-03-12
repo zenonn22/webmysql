@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Vertical icon navigation with slide-out menu</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+  <ul class="menu">
+      <li title="Inicio"><a href="#" class="inicio">Manual</a></li>
+      <li title="Temporales"><a href="temporales.html" class="temp">Temporales</a></li>
+      <li title="Join"><a href="join.html" class="join">Join</a></li>
+      <li title="Depart"><a href="depart.html" class="dept">depart</a></li>
+      <li title="Subconsultas"><a href="subconsultas.html" class="sub">Subconsultas</a></li>
+
+    </ul>
+    
+    <ul class="menu-bar">
+        <li><a href="index.html" class="menu-button">Inicio</a></li>
+        <li><a href="ddl3.html" class="menu-button">ddl</a></li>
+        <li><a href="agregacion.html">Agregación</a></li>
+        <li><a href="char.html">Char</a></li>
+        <li><a href="like.html">Like</a></li>
+        <li><a href="numericas.html">Numericas</a></li>
+    </ul>
+    <script src='js/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+
+<h1 id='MXYACAUdR6H'>Problemas: Subconsultas_2</h1>
+
+ ● Muestra tres ciudades que tengan una población mayor que la de New York <br/>
+
+<pre id='MXYACA3nYoG'>select Name from City WHERE Population &gt; (SELECT Population FROM City WHERE <br>Name='New York') limit 3;</pre>
+
+● Muestra los países localizados en la región 'Nordic Countries' y calcula el número de ciudades que tienen cada uno de ellos (subconsulta corelacionada) <br/>
+
+<pre id='MXYACAnMo5B'>select Name,(select count(*) from City where CountryCode = Country.Code )from<br>Country where Region='Nordic Countries';</pre>
+
+● Muestras los lenguajes hablados en 'Singapore' en orden descendiente. <br/>
+
+<pre id='MXYACANHFX6'>select Language from CountryLanguage where CountryCode=(select Code from Country<br>where Name='Singapore') order by 1 desc;</pre>
+
+● ¿Qué continentes tienen países en los que más del 50% de la población habla inglés? <br/>
+
+<pre id='MXYACAD5ZSe'>select distinct Continent from Country where exists(select * from CountryLanguage<br>where Country.Code = CountryCode and Language='English' and Percentage&gt;50);</pre>
+
+● ¿Qué país contiene la ciudad más poblada del mundo? <br/>
+
+<pre id='MXYACA15pY7'>select Name from Country WHERE Code =(SELECT CountryCode FROM City order by<br>Population DESC limit 1);</pre>
+
+<pre id='MXYACAQwS42'>select Name from Country where Code =(select CountryCode from City where<br>Population=(select MAX(Population)from city));</pre>
+
+● La siguiente consulta: SELECT * FROM Country c1 WHERE Continent = 'South America' AND Population = (SELECT MIN(Population) FROM Country c2 WHERE c2.Continent = c1.Continent) ¿Qué información nos devuelve? <br/>
+
+<pre id='MXYACAWsmP6'></pre>
+
+● ¿Podrías reescribir la consulta anterior utilizando subconsultas no relacionadas?<br/>
+
+<pre id='MXYACAjtBPd'> SELECT * FROM Country WHERE Continent = 'South America' AND Population =<br> (SELECT MIN(Population) FROM Country WHERE Continent = 'South America')</pre>
+
+
+  </body>
+</html>

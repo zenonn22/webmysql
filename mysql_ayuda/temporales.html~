@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Vertical icon navigation with slide-out menu</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+    
+  <ul class="menu">
+      <li title="Inicio"><a href="#" class="inicio">Manual</a></li>
+      <li title="Temporales"><a href="temporales.html" class="temp">Temporales</a></li>
+      <li title="Join"><a href="join.html" class="join">Join</a></li>
+      <li title="Depart"><a href="depart.html" class="dept">depart</a></li>
+      <li title="Subconsultas"><a href="subconsultas.html" class="sub">Subconsultas</a></li>
+
+    </ul>
+    
+    <ul class="menu-bar">
+        <li><a href="index.html" class="menu-button">Inicio</a></li>
+        <li><a href="ddl3.html" class="menu-button">ddl</a></li>
+        <li><a href="agregacion.html">Agregación</a></li>
+        <li><a href="char.html">Char</a></li>
+        <li><a href="like.html">Like</a></li>
+        <li><a href="numericas.html">Numericas</a></li>
+    </ul>
+    <script src='js/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+
+<h1 id='EFTACAhZTA0'>Funciones temporales</h1>
+
+<br/>
+
+<div data-section-style='5'><ul id='EFTACAs5JhA'><li id='EFTACAAdLhI' class='' value='1'>Muestra la fecha actual
+
+<br/></li></ul></div><pre id='EFTACAsPf5e'>select curdate();</pre>
+
+<div data-section-style='5'><ul id='EFTACAJOZkn'><li id='EFTACAbW2hc' class='' value='1'>Muestra la longitud en caracteres de la fecha actual
+
+<br/></li></ul></div><pre id='EFTACASdhWA'>select char_length(curdate()); </pre>
+
+<div data-section-style='5'><ul id='EFTACArgbfF'><li id='EFTACAwt2aq' class='' value='1'>Muestra qué día será dentro de 20 días
+
+<br/></li></ul></div><pre id='EFTACAjszAw'>select now()+interval 20 day; </pre>
+
+<div data-section-style='5'><ul id='EFTACA31crQ'><li id='EFTACAZb6Ma' class='' value='1'>¿Qué día será si al día actual le quitamos un año y 20 días?
+
+<br/></li></ul></div><pre id='EFTACARv2ke'>select now()-interval 1 year- interval 20 day;</pre>
+
+<div data-section-style='5'><ul id='EFTACAXTO01'><li id='EFTACAHDAcK' class='' value='1'>¿Qué día será si al 10 de junio de 1990 le añadimos 3 meses y 5 días?
+
+<br/></li></ul></div><pre id='EFTACAjhpHt'>select '1990-06-10'+interval 3 month +interval 5 day; </pre>
+
+<div data-section-style='5'><ul id='EFTACAEt3gG'><li id='EFTACAZqQJG' class='' value='1'>Muestra la fecha actual con el formato: día_numérico + ”de” + nombre_mes + “de” + año.
+
+<br/></li></ul></div><pre id='EFTACAijsN7'>select date_format(now(),'%e de %M de %Y');</pre>
+
+<div data-section-style='5'><ul id='EFTACAfKVNs'><li id='EFTACAe7Ga8' class='' value='1'>¿Cómo podemos conseguir que los nombres de los meses y de los días de la semana aparezcan en castellano?
+
+<br/></li></ul></div><pre id='EFTACAg4uRQ'>set lc_time_names = 'es_ES'; </pre>
+
+<div data-section-style='5'><ul id='EFTACA9uQJj'><li id='EFTACAdiZaH' class='' value='1'>Busca alguna función que permita calcular cuántos días hay entre dos fechas.
+
+<br/></li></ul></div><pre id='EFTACAudwGR'>select datediff ('fecha1','fecha2'); </pre>
+
+  </body>
+</html>

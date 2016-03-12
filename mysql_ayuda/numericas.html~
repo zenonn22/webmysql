@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Vertical icon navigation with slide-out menu</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+  <ul class="menu">
+      <li title="Inicio"><a href="#" class="inicio">Manual</a></li>
+      <li title="Temporales"><a href="temporales.html" class="temp">Temporales</a></li>
+      <li title="Join"><a href="join.html" class="join">Join</a></li>
+      <li title="Depart"><a href="depart.html" class="dept">depart</a></li>
+      <li title="Subconsultas"><a href="subconsultas.html" class="sub">Subconsultas</a></li>
+
+    </ul>
+    
+    <ul class="menu-bar">
+        <li><a href="index.html" class="menu-button">Inicio</a></li>
+        <li><a href="ddl3.html" class="menu-button">ddl</a></li>
+        <li><a href="agregacion.html">Agregación</a></li>
+        <li><a href="char.html">Char</a></li>
+        <li><a href="like.html">Like</a></li>
+        <li><a href="numericas.html">Numericas</a></li>
+    </ul>
+    <script src='js/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+
+   
+<h1 id='cdcACAkpUHl'>Funciones Numericas</h1>
+
+<br/>
+
+Mostrar la división entera entre número de habitantes y superficie (SurfaceArea) de cada país. Ordenar el resultado de mayor a menor. ¿Cuál es el país más densamente poblado?<br/>
+
+<pre id='cdcACA3LyP2'>select Population div(SurfaceArea) from Country;</pre>
+
+<div data-section-style='5'><ul id='cdcACA13Dir'><li id='cdcACAD7H0W' class='' value='1'>Mostrar aquellos países que lograron su independencia en un año par.
+
+<br/></li></ul></div><pre id='cdcACA9MOup'>select name,IndepYear from Country where mod(IndepYear,2)=0; </pre>
+
+<div data-section-style='5'><ul id='cdcACAzAXvV'><li id='cdcACA8w4do' class='' value='1'>¿Cuáles son los 5 países con mayor esperanza de vida? Mostrar nombre del país, continente y la esperanza de vida sin valores decimales.
+
+<br/></li></ul></div><pre id='cdcACAaYYTf'> select name,Continent,abs(LifeExpectancy) from Country where LifeExpectancy is not NULL order by LifeExpectancy desc limit</pre>
+
+<div data-section-style='5'><ul id='cdcACABYecE'><li id='cdcACAMGy28' class='' value='1'>Multiplicar IndepYear por SurfaceArea de todos los países europeos y de todos los africanos.
+
+<br/></li></ul></div><pre id='cdcACAf9ar9'>select name,continent,SurfaceArea*IndepYear from Country where continent='Europe' OR continent='Africa';</pre>
+
+<div data-section-style='5'><ul id='cdcACACYACp'><li id='cdcACARm2o7' class='' value='1'>Mostrar aquellos países que en el campo ‘GNP’ tienen un valor superior a 63 e inferior o igual a 64
+
+<br/></li></ul></div><pre id='cdcACAVeZGF'>select name from Country where GNP&gt;63 and GNP&lt;=64; </pre>
+
+<br/>
+
+
+  </body>
+</html>

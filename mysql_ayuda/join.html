@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Vertical icon navigation with slide-out menu</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+  <ul class="menu">
+      <li title="Inicio"><a href="#" class="inicio">Manual</a></li>
+      <li title="Temporales"><a href="temporales.html" class="temp">Temporales</a></li>
+      <li title="Join"><a href="join.html" class="join">Join</a></li>
+      <li title="Depart"><a href="depart.html" class="dept">depart</a></li>
+      <li title="Subconsultas"><a href="subconsultas.html" class="sub">Subconsultas</a></li>
+
+    </ul>
+    
+    <ul class="menu-bar">
+        <li><a href="index.html" class="menu-button">Manual</a></li>
+        <li><a href="ddl3.html" class="menu-button">ddl</a></li>
+        <li><a href="agregacion.html">Agregación</a></li>
+        <li><a href="char.html">Char</a></li>
+        <li><a href="like.html">Like</a></li>
+        <li><a href="numericas.html">Numericas</a></li>
+    </ul>
+    <script src='js/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+
+<h1 id='AVVACAdKp87'>Join</h1>
+
+Muestra el nombre de cada ciudad junto al nombre del país al que pertenece <br/>
+
+cada una.<br/>
+
+<pre id='AVVACARTecb'>select City.Name,Country.Name from Country,City where CountryCode=Code;</pre>
+
+<br/>
+
+Muestra el nombre de cada idioma junto al nombre del país en que se habla.<br/>
+
+<pre id='AVVACAtDqir'>select Language,Country.Name from CountryLanguage,Country where CountryCode=Code ;</pre>
+
+Muestra el nombre de las 10 ciudades más pobladas junto con el nombre del <br/>
+
+país al que pertenece cada una<br/>
+
+<pre id='AVVACAJFsLT'>select City.Population,City.Name,Country.Name from Country,City where CountryCode=Code order by 1 desc limit 10;</pre>
+
+Muestra las ciudades que hay en Ucrania (‘Ukraine’)<br/>
+
+<pre id='AVVACA5Ty9z'>select City.Name,Country.Name from Country,City where CountryCode=Code and Country.Name='Ukraine';</pre>
+
+<br/>
+
+Muestra los lenguajes que se hablan en el continente africano ordenados <br/>
+
+alfabéticamente.<br/>
+
+<pre id='AVVACAV7iig'>select CountryLanguage.Language, Country.Name from CountryLanguage,Country where CountryCode=Code and Country.Continent='Africa';</pre>
+
+<br/>
+
+Mostrar la suma de las poblaciones de las ciudades de Rusia (Russian <br/>
+
+Federation).<br/>
+
+<pre id='AVVACAZqK0m'>select sum(City.Population), Country.Name from Country,City where CountryCode=Code and Country.Name='Russian Federation';</pre>
+
+<br/>
+
+¿Qué cantidad de la población rusa no vive en una ciudad?<br/>
+
+<pre id='AVVACAY5Xtg'>select Country.Population-sum(City.Population), Country.Name from Country,City where CountryCode=Code and Country.Name='Russian Federation';</pre>
+
+
+</style></head><body><h1 id='aMbACA7PnU6'>Join 2</h1>
+
+<b>Base de Datos “VideoClub”</b><br/>
+
+<br/>
+
+<br/>
+
+● Lista de fechas e importes junto con el nombre y teléfono del cliente asociado.<br/>
+
+<pre id='aMbACAXRvcm'>select Data,Import,Nom,Telefon from FACTURA join CLIENT using (DNI); </pre>
+
+<br/>
+
+● Suma del importe de todas las facturas del día 06/03/2009<br/>
+
+<pre id='aMbACAhB5AC'>select sum(import) from FACTURA where Data='20090306'; </pre>
+
+● Lista de productos (descripció) facturados en las facturas del cliente con DNI 022222222R.<br/>
+
+<pre id='aMbACAkYiWa'>select Descripcio from DETALLFACTURA join FACTURA using(CodiFactura) where DNI='022222222R';</pre>
+
+● Lista los nombres de los clientes y los títulos de las películas que tienen o han tenido en préstamo.<br/>
+
+<pre id='aMbACAibb55'>select nom,titol from CLIENT,PRESTEC,PELICULA where CLIENT.DNI=PRESTEC.DNI and PRESTEC.CodiPeli=PELICULA.CodiPeli;  </pre>
+
+● Listar el número de películas que tiene o ha tenido en préstamo cada cliente.<br/>
+
+<pre id='aMbACAkSN6H'>select nom,count(*) from CLIENT join PRESTEC using (DNI) group by CLIENT.nom; </pre>
+
+● Listar los actores principales de las películas del videoclub. Cada actor sólo puede aparecer una única vez.<br/>
+
+<pre id='aMbACAurxSI'>select distinct Nom actor from ACTOR join PELICULA using (CodiActor);</pre>
+
+<br/>
+
+● Listar el título de las películas que son del genero de terror.<br/>
+
+<pre id='aMbACAJwgoo'>select titol from PELICULA join GENERE using (CodiGenere) where descripcio='Terror'; </pre>
+
+<p id='aMbACAitH2W'>● Listar las películas que tienen segunda parte junto al título de esa segunda parte.</p>
+
+<pre id='aMbACAyjqXf'>select p.titol,pe.titol from PELICULA p join PELICULA pe on pe.CodiPeli=p.SegonaPart; </pre>
+
+<p id='aMbACAIk9xO'>● Listar películas junto con el número de copias que tiene cada una.</p>
+
+<pre id='aMbACA8ZNzh'>select titol,count(*) from PELICULA join COPIA using (CodiPeli) group by CodiPeli; </pre>
+
+● Lista de importes facturados cada día ordenados de forma decreciente.<br/>
+
+<pre id='aMbACAbdz1t'>select data,sum(import) from FACTURA group by data order by import desc; </pre>
+
+<br/>
+
+  </body>
+</html>
