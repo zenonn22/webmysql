@@ -87,6 +87,17 @@ a.sub{
         background-position: center;
 
 }
+
+a.dml{
+
+	background-image: url("../dml.png");
+        background-repeat: no-repeat;
+        background-position: center;
+
+}
+
+
+
 /* Body text */
 body, p, ul, ol, td {
     font-family: 'Crimson Text', serif;

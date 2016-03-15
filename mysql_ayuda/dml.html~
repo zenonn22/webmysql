@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+ 
+     <ul class="menu">
+      <li title="Inicio"><a href="#" class="inicio">Manual</a></li>
+      <li title="Temporales"><a href="temporales.html" class="temp">Temporales</a></li>
+      <li title="Join"><a href="join.html" class="join">Join</a></li>
+      <li title="Depart"><a href="depart.html" class="dept">depart</a></li>
+      <li title="Subconsultas"><a href="subconsultas.html" class="sub">Subconsultas</a></li>
+      <li title="DML"><a href="dml.html" class="dml">DML</a></li>
+
+    </ul>
+    
+    <ul class="menu-bar">
+        <li><a href="index.html" class="menu-button">Inicio</a></li>
+        <li><a href="ddl3.html" class="menu-button">ddl</a></li>
+        <li><a href="agregacion.html">Agregación</a></li>
+        <li><a href="char.html">Char</a></li>
+        <li><a href="like.html">Like</a></li>
+        <li><a href="numericas.html">Numericas</a></li>
+    </ul>
+    <script src='js/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+<h1 id='GARACA1jyi1'>DML ( Insert, Drop,Replace,Update,Create)</h1>
+
+<br/>
+
+Sintaxis:<br/>
+
+<pre id='GARACAHnhGi'><code>INSERT INTO nombre_tabla (lista_columnas) VALUES (lista_valores)<br></code>REPLACE INTO nombre_tabla (lista_columnas) VALUES (lista_valores)<br>UPDATE nombre_tabla SET nombre_columna=expresión [,nombre_columna=expresión,...] [WHERE condición] [otras_cláusulas]<br>DELETE FROM nombre_tabla [WHERE condición] [ORDER BY ....] [LIMIT numero_filas]</pre>
+
+ <br/>
+
+● Añade una fila de datos nueva en la tabla GelderlandDist. La nueva fila contendrá la ciudad de "Sakila" del distrito de Gelderland, el countrycode será 'SQL' y la fecha de inauguración el 1 de julio de 2001. <br/>
+
+<pre id='GARACA4dVFY'>insert into GelderlandDist values ('Sakila','Genderland','Sql','20010701');</pre>
+
+● Añade dos filas en un misma instrucción en la tabla GelderlandDist. Los datos serán: <br/>
+
+○ Fila1: ciudad 'MySQLland' , countrycode 'MYS' e inauguración el 4 de agosto de 1984. <br/>
+
+○ Fila2: ciudad Fantasia, countrycode 'FNT' e inauguración el 1 de enero de 1950.<br/>
+
+<pre id='GARACAyevzE'>insert into GelderlandDist values ('MySQLland','Gelderland','MYS','20010701'),<br>('Fantasia','Gelderland','FNT','19500101');</pre>
+
+<br/>
+
+● Reemplaza la fila con countrycode 'MYS' por otra con los mismos datos en todos los campos excepto en countrycode que tendrá 'SQL'. <br/>
+
+<pre id='GARACAcHKpg'>replace into GelderlandDist values ('MySQLland','Gelderland','SQL','20010701');</pre>
+
+<br/>
+
+● Actualiza la fecha de inauguración de la ciudad de Ede en la tabla GelderlandDist a 17 de mayo de 1980.<br/>
+
+<pre id='GARACApeeIQ'>update GelderlandDist set Inaguration='19800517' where Name='Ede';</pre>
+
+<br/>
+
+ ● Modifica en GelderlandDist aquellas filas cuyo countrycode es 'NLD' y cámbialo a 'FOO'. Ordena la actualización por nombre y limita el número de cambios a 2. <br/>
+
+<pre id='GARACAjEHhj'>update GelderlandDist set CountryCode='FOO' where CountryCode='NLD' order by Name limit 2;</pre>
+
+<br/>
+
+● Elimina solo una fila de GelderlandDist que contenga el countrycode ‘FOO’. <br/>
+
+<pre id='GARACAjP970'>delete from GelderlandDist where CountryCode='FOO';del FROM nombre_tabla [WHERE condición] [ORDER BY ....] [LIMIT<br>numero_filas]</pre>
+
+<br/>
+
+● Crear una tabla con la estructura de City <br/>
+
+<pre id='GARACAHpSmt'>create table City2 like City;</pre>
+
+<br/>
+
+● Rellenarla con los datos de City pertenecientes a los distritos Ontario y England (Ayuda: mira el manual. Existe una opción de utilizar el insert combinado con select) <br/>
+
+<pre id='GARACACrPw7'>insert into City2 select * from City where district in('Ontario','England');</pre>
+
+<br/>
+
+● Actualizar todas las poblaciones de las filas cuyo distrito sea England y darles el valor de la población de la ciudad de Sao Paulo utilizando una consulta para ello.<br/>
+
+<pre id='GARACAo2636'>update City2 set Population=(select Population from City where name='Sao Paulo') where district='England';</pre>
+
+<br/>
+
+ ● Actualizar la población de la ciudad de Cambridge (England) para que sea igual a la población de la ciudad de Ede (la de mayor población ya que hay dos)<br/>
+
+<pre id='GARACAYH443'>update City2 set Population=(select Population from City where name='Ede' order by 1 desc limit 1) where Name='Cambridge' and District='England';</pre>
+
+<br/>
+
+ ● Insertar en la nueva tabla una fila que contenga: <br/>
+
+○ id: el valor que le corresponde por ser un autoincremental <br/>
+
+○ Name: el nombre de la ciudad con menos habitantes de la tabla city <br/>
+
+○ countrycode: que será igual al de cambridge de England <br/>
+
+○ district: insertar 'distrito final' <br/>
+
+○ Population: que será igual a la división entera de la mayor población de la <br/>
+
+<pre id='GARACAOJK2h'>insert into City2 values (<br>default,<br>(select name from City where Population=min(Population)),<br>(select CountryCode from City where Name='Cambridge'),<br>'distrito final',<br>(select max(Population) div 5 from City)<br>);</pre>
+
+<br/>
+
+  </body>
+</html>

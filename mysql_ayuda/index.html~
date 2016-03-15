@@ -30,6 +30,8 @@
     </ul>
     <script src='js/jquery.min.js'></script>
         <script src="js/index.js"></script>
+<a href="manual/index.html">MANUAL OFICIAL MYSQL</a>
+
 <h1 id='KMCACAf6WrJ'>DML (Lenguaje de <font color=gray>manipulación</font> de datos)</h1>
 
 • SELECT: Devuelve Información de la consulta.<br>
@@ -37,7 +39,7 @@
 • UPDATE: Actualiza inofrmacion de una o varias tablas.<br>
 • DELETE: Elimina datos de una o varias tablas.<br>
 
-<h1 id='KMCACAf6WrJ'>DDL (Lenguaje de  <font color="#3e61a6">definición</font> de datos)</h1>
+<h1 id='KMCACAf6WrJ'>DDL (Lenguaje de  <font color=gray>definición</font> de datos)</h1>
 
 • CREATE: Crea objetos dentro de una base de datos.<br>
 • ALTER: Modifica objetos dentro de una base de datos.<br>
